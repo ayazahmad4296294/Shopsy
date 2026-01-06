@@ -30,14 +30,14 @@ const TestimonialData = [
 
 const Testimonials = () => {
     var settings = {
-        // dots: true,
+        dots: true,
         arrows: false,
         infinite: true,
         speed: 500,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
-        cssEase: "linear",
+        autoplaySpeed: 3000,
+        cssEase: "ease-in-out",
         pauseOnHover: true,
         pauseOnFocus: true,
         slidesToShow: 3,
@@ -51,7 +51,14 @@ const Testimonials = () => {
                 },
             },
             {
-                breakpoint: 640,
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -85,25 +92,35 @@ const Testimonials = () => {
                 <div data-aos="fade-up">
                     <Slider {...settings}>
                         {TestimonialData.map((data) => (
-                            <div className="my-6">
+                            <div key={data.id} className="my-6">
                                 <div
-                                    key={data.id}
-                                    className="flex flex-col gap-4 shadow-lg py-8 px-6 mx-4 rounded-xl dark:bg-gray-800 bg-primary/10 relative">
-                                    <div className="mb-4">
-                                        <img
-                                            src={data.img}
-                                            alt=""
-                                            className="rounded-full w-20 h-20" />
-                                    </div>
-                                    <div className="flex flex-col items-center gap-4">
-                                        <div className="space-y-3">
-                                            <p className="text-xs text-gray-500">{data.text}</p>
-                                            <h1 className="text-xl font-bold text-black/80 dark:text-light">
+                                    className="flex flex-col gap-4 shadow-lg py-8 px-6 mx-4 rounded-xl dark:bg-gray-800 bg-primary/10 relative h-full min-h-[250px]">
+                                    <div className="flex items-center gap-4 mb-4">
+                                        <div className="shrink-0">
+                                            <img
+                                                src={data.img}
+                                                alt={data.name}
+                                                className="rounded-full w-16 h-16 object-cover border-2 border-primary" />
+                                        </div>
+                                        <div>
+                                            <h1 className="text-lg font-bold text-black/80 dark:text-white">
                                                 {data.name}
                                             </h1>
+                                            <div className="flex text-yellow-500 text-xs">
+                                                <FaStar />
+                                                <FaStar />
+                                                <FaStar />
+                                                <FaStar />
+                                                <FaStar />
+                                            </div>
                                         </div>
                                     </div>
-                                    <p className="text-black/20 dark:text-light text-9xl font-serif absolute top-0 right-0">
+                                    <div className="relative z-10">
+                                        <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+                                            "{data.text}"
+                                        </p>
+                                    </div>
+                                    <p className="text-primary/10 dark:text-white/5 text-9xl font-serif absolute -bottom-5 right-4 pointer-events-none select-none">
                                         ,,
                                     </p>
                                 </div>
@@ -113,7 +130,7 @@ const Testimonials = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Testimonials
