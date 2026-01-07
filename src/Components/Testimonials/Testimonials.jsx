@@ -57,11 +57,11 @@ const Testimonials = () => {
                     {TestimonialData.map((data) => (
                         <div key={data.id} className="group">       
                             <div
+                                data-aos="fade-up"
                                 className="flex flex-col gap-4 shadow-lg py-8 px-6 rounded-xl dark:bg-gray-800 bg-primary/10 relative h-full min-h-[230px] group-hover:bg-primary/20 transition-all duration-300">
                                 <div
                                     className="flex items-center gap-4 mb-4">
                                     <div
-                                        data-aos="fade-up"
                                         className="shrink-0">
                                         <img
                                             src={data.img}
