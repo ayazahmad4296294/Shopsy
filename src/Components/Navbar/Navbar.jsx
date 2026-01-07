@@ -6,9 +6,16 @@ import { CiSearch } from "react-icons/ci";
 import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { fetchCategories } from "../../Api";
+import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
+import ResponsiveMenu from "./ResponsiveMenu";
 
 const Navbar = ({ handleOrderPopup }) => {
     const [categories, setCategories] = useState([]);
+    const [showMenu, setShowMenu] = useState(false);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
 
     useEffect(() => {
         const getCategories = async () => {
@@ -91,11 +98,31 @@ const Navbar = ({ handleOrderPopup }) => {
 
                         {/* Darkmode Switch */}
                         <div>
-                            <DarkMode />
+                            {/* <DarkMode /> */}
+                        </div>
+
+                        {/* Mobile Menu Hammer */}
+                        <div className="flex items-center sm:hidden text-primary">
+                            {showMenu ? (
+                                <HiMenuAlt1
+                                    onClick={toggleMenu}
+                                    className="cursor-pointer transition-all"
+                                    size={30}
+                                />
+                            ) : (
+                                <HiMenuAlt3
+                                    onClick={toggleMenu}
+                                    className="cursor-pointer transition-all"
+                                    size={30}
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Responsive Menu */}
+            <ResponsiveMenu showMenu={showMenu} setShowMenu={setShowMenu} Menu={Menu} />
 
             {/* Lower Navbar */}
             <div className="flex justify-center py-2">
