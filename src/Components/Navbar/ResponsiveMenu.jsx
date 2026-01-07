@@ -2,7 +2,7 @@ import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const ResponsiveMenu = ({ showMenu, setShowMenu, Menu }) => {
+const ResponsiveMenu = ({ showMenu, setShowMenu, Menu, isLoggedIn, handleLogout }) => {
   return (
     <div
       className={`${
@@ -32,6 +32,38 @@ const ResponsiveMenu = ({ showMenu, setShowMenu, Menu }) => {
                 </Link>
               </li>
             ))}
+            <li>
+              <div className="flex flex-col gap-2 mt-4">
+                {isLoggedIn ? (
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setShowMenu(false);
+                    }}
+                    className="inline-block bg-primary/20 text-black dark:text-white py-2 px-6 rounded-full font-bold text-center"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      onClick={() => setShowMenu(false)}
+                      className="inline-block bg-primary/20 text-black dark:text-white py-2 px-6 rounded-full font-bold text-center"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      to="/register"
+                      onClick={() => setShowMenu(false)}
+                      className="inline-block bg-gradient-to-r from-primary to-secondary text-white py-2 px-6 rounded-full font-bold text-center"
+                    >
+                      Sign Up
+                    </Link>
+                  </>
+                )}
+              </div>
+            </li>
           </ul>
         </nav>
       </div>

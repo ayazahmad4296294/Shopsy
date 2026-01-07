@@ -4,17 +4,25 @@ import DarkMode from "./DarkMode";
 // Icons
 import { CiSearch } from "react-icons/ci";
 import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchCategories } from "../../Api";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import ResponsiveMenu from "./ResponsiveMenu";
+import { useAuth } from "../../context/AuthContext";
 
 const Navbar = ({ handleOrderPopup }) => {
     const [categories, setCategories] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
+    const { isLoggedIn, logout } = useAuth();
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
+    };
+
+    const handleLogout = () => {
+        logout();
+        navigate("/login");
     };
 
     useEffect(() => {
@@ -96,9 +104,24 @@ const Navbar = ({ handleOrderPopup }) => {
                             <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
                         </button>
 
-                        {/* Darkmode Switch */}
-                        <div>
+                        {/* Auth Buttons */}
+                        <div className="flex items-center gap-2">
                             {/* <DarkMode /> */}
+                            {isLoggedIn ? (
+                                <button
+                                    onClick={handleLogout}
+                                    className="bg-primary/20 hover:bg-primary/30 transition-all duration-200 text-black dark:text-white py-1 px-4 rounded-full font-medium"
+                                >
+                                    Logout
+                                </button>
+                            ) : (
+                                <Link
+                                    to="/register"
+                                    className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full hidden sm:flex items-center gap-3 group font-medium"
+                                >
+                                    Sign Up
+                                </Link>
+                            )}
                         </div>
 
                         {/* Mobile Menu Hammer */}
@@ -122,7 +145,13 @@ const Navbar = ({ handleOrderPopup }) => {
             </div>
 
             {/* Responsive Menu */}
-            <ResponsiveMenu showMenu={showMenu} setShowMenu={setShowMenu} Menu={Menu} />
+            <ResponsiveMenu
+                showMenu={showMenu}
+                setShowMenu={setShowMenu}
+                Menu={Menu}
+                isLoggedIn={isLoggedIn}
+                handleLogout={handleLogout}
+            />
 
             {/* Lower Navbar */}
             <div className="justify-center py-2 hidden sm:flex">

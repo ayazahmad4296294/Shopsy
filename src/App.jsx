@@ -12,6 +12,11 @@ import "aos/dist/aos.css";
 import { Routes, Route } from "react-router-dom";
 import React from "react";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import { AuthProvider } from "./context/AuthContext";
+import AuthPopup from "./Components/AuthPopup/AuthPopup";
+import GuardRoute from "./Components/GuardRoute";
 
 const App = () => {
 
@@ -26,16 +31,42 @@ const App = () => {
    }, []);
 
    return (
-      <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
-         <Navbar />
-         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<AllProducts />} />
-            <Route path="/products/category/:category" element={<CategoryProducts />} />
-            <Route path="/product/:slug" element={<ProductDetails />} />
-         </Routes>
-         <Footer />
-      </div>
+      <AuthProvider>
+         <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
+            <Navbar />
+            <AuthPopup />
+            <Routes>
+               <Route path="/" element={<Home />} />
+               <Route
+                  path="/products"
+                  element={
+                     <GuardRoute>
+                        <AllProducts />
+                     </GuardRoute>
+                  }
+               />
+               <Route
+                  path="/products/category/:category"
+                  element={
+                     <GuardRoute>
+                        <CategoryProducts />
+                     </GuardRoute>
+                  }
+               />
+               <Route
+                  path="/product/:slug"
+                  element={
+                     <GuardRoute>
+                        <ProductDetails />
+                     </GuardRoute>
+                  }
+               />
+               <Route path="/register" element={<Register />} />
+               <Route path="/login" element={<Login />} />
+            </Routes>
+            <Footer />
+         </div>
+      </AuthProvider>
    )
 }
 
