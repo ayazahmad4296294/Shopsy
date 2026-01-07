@@ -20,7 +20,7 @@ const ResponsiveMenu = ({ showMenu, setShowMenu, Menu }) => {
           </div>
         </div>
         <nav className="mt-12">
-          <ul className="space-y-4 text-xl">
+          <ul className="space-y-1 text-xl">
             {Menu.map((data) => (
               <li key={data.id}>
                 <Link

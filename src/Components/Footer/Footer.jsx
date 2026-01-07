@@ -40,7 +40,6 @@ const Footer = () => {
     return (
         <div>
             <div style={BannerImg} className="w-full text-white py-10 px-6 md:px-10 lg:px-20">
-                {/* <div style={BannerImg} className="w-full text-white py-10 px-6 md:px-10 lg:px-20"> mb-10 */}
                 <div className="grid md:grid-cols-3 lg:grid-cols-3 py-52 pt-5">
                     {/* Company Details */}
                     <div className="mr-10">
