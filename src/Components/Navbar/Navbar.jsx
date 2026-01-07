@@ -75,7 +75,7 @@ const Navbar = ({ handleOrderPopup }) => {
                     </div>
 
                     {/* search bar */}
-                    <div className="flex justify-between items-center gap-4">
+                    <div className="flex justify-between items-center gap-3">
                         <div className="relative group hidden sm:block">
                             <input
                                 type="text"
