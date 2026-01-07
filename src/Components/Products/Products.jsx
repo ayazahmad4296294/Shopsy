@@ -159,7 +159,7 @@ const Products = ({ category, limit, title, sortByRating, hideHeader }) => {
                                                 <FaStar className="text-yellow-400" />
                                                 <span className="text-sm font-medium text-gray-600">{data.rating}</span>
                                             </div>
-                                            <button className="bg-primary text-white py-1.5 px-4 rounded-full hover:scale-105 transition-all duration-300 text-sm font-semibold shadow-sm">
+                                            <button className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1.5 px-4 rounded-full hover:scale-105 transition-all duration-300 text-sm font-semibold shadow-sm">
                                                 Order Now
                                             </button>
                                         </div>

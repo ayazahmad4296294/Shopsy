@@ -84,7 +84,7 @@ const TopProducts = () => {
                         <p className="text-gray-500 duration-300 text-sm line-clamp-2">
                            {data.description}
                         </p>
-                        <button className="bg-gradient-to-r from-primary to-secondary text-white py-1 px-4 rounded-full mt-4"
+                        <button className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full mt-4"
                         // onClick={handleOrderPopup}
                         >
                            Order Now

@@ -22,7 +22,7 @@ const Home = () => {
                     </h2>
                     <Link
                         to="/products"
-                        className="bg-primary text-white py-2 px-6 rounded-full hover:scale-105 transition-all duration-300 font-semibold shadow-md text-sm"
+                        className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-2 px-6 rounded-full hover:scale-105 transition-all duration-300 font-semibold shadow-md text-sm"
                     >
                         View All Products
                     </Link>

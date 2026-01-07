@@ -81,7 +81,7 @@ const ProductDetails = () => {
                         </p>
 
                         <div className="mt-5">
-                            <button className="bg-primary text-white py-2 px-5 rounded-full hover:scale-105 transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-primary/50">
+                            <button className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-2 px-5 rounded-full hover:scale-105 font-bold text-lg shadow-lg hover:shadow-primary/50">
                                 Add to Cart
                             </button>
                         </div>

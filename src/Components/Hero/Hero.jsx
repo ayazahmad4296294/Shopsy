@@ -63,7 +63,7 @@ const Hero = () => {
                                         {data.description}
                                     </p>
                                     <div>
-                                        <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full">
+                                        <button className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-2 px-4 rounded-full">
                                             Order Now
                                         </button>
                                     </div>
