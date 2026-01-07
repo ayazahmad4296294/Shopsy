@@ -125,7 +125,7 @@ const Navbar = ({ handleOrderPopup }) => {
             <ResponsiveMenu showMenu={showMenu} setShowMenu={setShowMenu} Menu={Menu} />
 
             {/* Lower Navbar */}
-            <div className="flex justify-center py-2">
+            <div className="justify-center py-2 hidden sm:flex">
                 <ul className="sm:flex hidden items-center gap-4">
                     {Menu.map((data) => (
                         <li key={data.id}>

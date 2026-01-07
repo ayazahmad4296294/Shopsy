@@ -35,7 +35,7 @@ const TopProducts = () => {
       <div>
          <div className='container'>
             {/* Header Section */}
-            <div className="text-left mb-24">
+            <div className="text-left mb-20">
                <p
                   data-aos="fade-up"
                   className="text-sm text-primary">
@@ -54,22 +54,22 @@ const TopProducts = () => {
             </div>
             {/* Body Section */}
             <div
-               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center">
+               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-5 place-items-center">
                {ProductsData.map((data) => (
                   <div key={data.id}
                      data-aos="fade-up"
                      data-aos-delay={data.aosDelay}
-                     className="relative rounded-2xl shadow-md hover:shadow-xl  duration-300 group max-w-[300px]">
+                     className="relative rounded-2xl shadow-md hover:shadow-xl duration-300 group max-w-[300px]">
                      {/* image section */}
                      <div className="h-[100px]">
                         <img
                            src={data.img}
                            alt=""
-                           className="max-w-[140px] block mx-auto transform -translate-y-20 duration-300 drop-shadow-md"
+                           className="max-w-[140px] block mx-auto mt-4 duration-300 drop-shadow-md"
                         />
                      </div>
                      {/* details section */}
-                     <div className="p-4 text-center">
+                     <div className="p-4 mt-20 text-center">
 
                         {/* ratings */}
                         <div className="w-full flex items-center justify-center gap-1">

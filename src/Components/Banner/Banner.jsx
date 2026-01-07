@@ -14,11 +14,11 @@ const Banner = () => {
                      data-aos="fade-up"
                      src={BannerImg}
                      alt=""
-                     className="max-w-[400px] h-[350px] w-full mx-auto drop-shadow-[-5px_8px_8px_rgba(0,0,0,0.5)] object-cover"
+                     className="max-w-[400px] h-[350px] md:w-full w-full sm:w-[250px] px-3 mx-auto drop-shadow-[-5px_8px_8px_rgba(0,0,0,0.5)] object-cover"
                   />
                </div>
                {/* text details section */}
-               <div className="flex flex-col justify-center gap-6 sm:pt-0">
+               <div className="flex flex-col justify-center gap-6 sm:pt-0 px-3 md:px-0 lg:px-0">
                   <h2
                      data-aos="fade-up"
                      className="text-4xl font-bold mb-1">
