@@ -87,12 +87,31 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+    console.error("MONGO_URI is not defined in .env file");
+    process.exit(1);
+}
+
+console.log(`Connecting to: ${MONGO_URI.replace(/:([^:@]+)@/, ":****@")}`);
+console.log("Attempting to connect to MongoDB...");
 mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => {
-        console.log("MongoDB Connected");
-        app.listen(PORT, () =>
-            console.log(`Server running on port ${PORT}`)
-        );
+    .connect(MONGO_URI, {
+        serverSelectionTimeoutMS: 5000,
     })
-    .catch((err) => console.log(err));
+    .then(() => {
+        console.log("✅ MongoDB Connected Successfully");
+        app.listen(PORT, () => {
+            console.log(`🚀 Server running on port ${PORT}`);
+            console.log(`🔗 URL: http://localhost:${PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.error("❌ MongoDB Connection Error:");
+        console.error(err.message);
+        if (err.name === 'MongooseServerSelectionError') {
+            console.error("💡 Tip: Check if your IP address is whitelisted in MongoDB Atlas.");
+        }
+        process.exit(1);
+    });
